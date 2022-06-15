@@ -88,3 +88,18 @@ bool Calculation(stack <Leksema>& Stack_number, stack <Leksema>& Stack_operation
 	return true;   // возражаем true
 }
 
+
+int priority(char current_character) { //функция возвращает приоритет операции: "1" для сложения и вычитания, "2" для умножения и деления и т.д.
+	if (current_character == '+' || current_character == '-')  // если введений символ равен + или - то ми возражаем 1
+	{
+		return 1;
+	}
+	if (current_character == '*' || current_character == '/')   // если введений символ равен * или / то ми возражаем 2
+	{
+		return 2;
+	}
+	else   // в отальному ми возражаем 0
+	{
+		return 0;
+	}
+}
