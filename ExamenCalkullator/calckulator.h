@@ -46,7 +46,15 @@ bool Calculation(stack <Leksema>& Stack_number, stack <Leksema>& Stack_operation
 		Stack_number.push(item); // результат операции кладется обратно в стек с числами
 		Stack_operation.pop();       // удаляется верхнее елемент с стека
 		break;                      //Оператор break завершает выполнение ближайшего включающего цикла или условного оператора
-
+	case '-':
+		next_number_steck = Stack_number.top().value; //возращения верхнего елемент в стеке
+		Stack_number.pop();                            // удаляется верхнее елемент с стека
+		resultat_operation = next_number_steck - top_number_steck;   // результат операциии
+		item.type = '0';                                            //  указиваем тип елемента а имено его тип это число ноль
+		item.value = resultat_operation;                             //значения результата     
+		Stack_number.push(item);                               // ложем результат  операции в стек с числами
+		Stack_operation.pop();                                     // удаляется верхнее число со стека
+		break;
 	return true;   // возражаем true
 }
 
