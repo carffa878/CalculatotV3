@@ -64,6 +64,27 @@ bool Calculation(stack <Leksema>& Stack_number, stack <Leksema>& Stack_operation
 		Stack_number.push(item);                      // ложем результат  операции в стек с числами
 		Stack_operation.pop();                            // удаляется верхнее елемент с стека
 		break;
+	case '/':
+		next_number_steck = Stack_number.top().value;   //возращения верхнего елемент в стеке
+		if (top_number_steck == 0)    // если елемент равен 0 тогда ми возращаем false и выводим предупреждения для пользователя
+		{
+			cerr << "\nНа 0 делить нельзя!\n";
+			return false;
+		}
+		else {
+			Stack_number.pop();                          // удаляется верхнее елемент с стека
+			resultat_operation = (next_number_steck / top_number_steck);   // результат операциии
+			item.type = '0';                                           //  указиваем тип елемента а имено его тип это число ноль
+			item.value = resultat_operation;                           //значения результата  
+			Stack_number.push(item);                                // ложем результат  операции в стек с числами
+			Stack_operation.pop();                                     // удаляется верхнее елемент с стека
+			break; //Оператор break завершает выполнение ближайшего включающего  условного оператора
+		}
+	default:  // Оператор default (по умолчанию) выполняется, если ни одно значение константного выражения case не равно значению выражения и у нашому случае возращаеть false
+		cerr << "\nОшибка";
+		return false;
+		break;//Оператор break завершает выполнение ближайшего включающего  условного оператора
+	}
 	return true;   // возражаем true
 }
 
